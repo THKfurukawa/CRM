@@ -5,6 +5,6 @@
         />
     </svg> -->
     <div>
-        <img src="/images/IMG_0711.jpeg" alt=""/>
+        <img src="/images/parora.jpeg" alt=""/>
     </div>
 </template>

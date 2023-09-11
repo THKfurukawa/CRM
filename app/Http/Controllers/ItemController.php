@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Models\Item;
+use Inertia\Inertia;
 
 class ItemController extends Controller
 {
@@ -15,7 +16,16 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        // $items = Item::select('id', 'name', 'price', 'is_selling')
+        // ->get();
+        // return Inertia::render('Items/Index', [
+        //     'items' => $items
+        // ]); 下記と記述同じ
+
+        return Inertia::render('Items/Index', [
+            'items' => Item::select('id', 'name', 'price', 'is_selling')
+            ->get()
+        ]);
     }
 
     /**
@@ -25,7 +35,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Items/Create');
     }
 
     /**
@@ -36,7 +46,23 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'max:20'],
+            'memo' => ['required'],
+            'price' => ['required'],
+        ]);
+
+        Item::create([
+            'name' => $request->name,
+            'memo' => $request->memo,
+            'price' => $request->price,
+        ]);
+
+        return to_route('items.index')
+        ->with([
+            'message' => '登録しました。',
+            'status' => 'success',
+        ]);
     }
 
     /**
