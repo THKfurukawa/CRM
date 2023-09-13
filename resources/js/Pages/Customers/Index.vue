@@ -59,7 +59,7 @@ const searchCustomers = () => {
                                             </tr>
                                             </tbody>
                                         </table>
-                                    </div>
+                                        </div>
                                 </div>
                             <Pagination class="mt-6 items-center" :links="customers.links"></Pagination>
                         </section>
