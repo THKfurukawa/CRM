@@ -3,7 +3,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import { onMounted, reactive, ref, computed } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
-// import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import { getToday } from '@/common';
 import MicroModal from '@/Components/MicroModal.vue';
 
